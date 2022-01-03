@@ -1,4 +1,4 @@
-package com.technicaltest.payments;
+package com.technicaltest.payments.kafkaadapter.exceptions;
 
 public class PaymentAmountAtLeastTenException extends BusinessException {
 

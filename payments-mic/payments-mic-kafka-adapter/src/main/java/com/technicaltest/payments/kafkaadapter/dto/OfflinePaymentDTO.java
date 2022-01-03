@@ -1,4 +1,4 @@
-package com.technicaltest.payments;
+package com.technicaltest.payments.kafkaadapter.dto;
 
 import lombok.Data;
 

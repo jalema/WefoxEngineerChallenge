@@ -1,9 +1,11 @@
-package com.technicaltest.payments;
+package com.technicaltest.payments.kafkaadapter.consumers;
 
 import java.util.function.Consumer;
 
 import org.springframework.stereotype.Component;
 
+import com.technicaltest.payments.kafkaadapter.dto.OfflinePaymentDTO;
+import com.technicaltest.payments.kafkaadapter.exceptions.PaymentAmountAtLeastTenException;
 import lombok.extern.slf4j.Slf4j;
 
 @Component("offlinePayment")

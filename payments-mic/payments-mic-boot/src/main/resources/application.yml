@@ -40,7 +40,9 @@ spring:
               com:
                 technicaltest:
                   payments:
-                    BusinessException: false
+                    kafkaadapter:
+                      exceptions:
+                        BusinessException: false
         onlinePayment-in-0:
           destination: online
           group: online-payments-cg
@@ -54,4 +56,6 @@ spring:
               com:
                 technicaltest:
                   payments:
-                    BusinessException: false
+                    kafkaadapter:
+                      exceptions:
+                        BusinessException: false
