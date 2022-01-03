@@ -80,3 +80,10 @@ services:
     depends_on:
       - postgress
       - kafka-server
+
+  zipkin-server:
+    image: openzipkin/zipkin
+    networks:
+      - kafka-net
+    ports:
+      - 9411:9411
