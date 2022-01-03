@@ -1,3 +1,24 @@
+logging:
+  level:
+    root: ERROR
+    org:
+      hibernate:
+        SQL: ERROR
+        type:
+          descriptor:
+            sql:
+              BasicBinder: ERROR
+    com:
+      technicaltest:
+        payments:
+          kafkaadapter:
+            in:
+              consumers: DEBUG
+          jpaadapter:
+            repositories: DEBUG
+          application:
+            services:
+              PaymentsService: INFO
 server:
   port: 8081
 spring:
@@ -40,7 +61,7 @@ spring:
               com:
                 technicaltest:
                   payments:
-                    kafkaadapter:
+                    domain:
                       exceptions:
                         BusinessException: false
         onlinePayment-in-0:
@@ -56,6 +77,15 @@ spring:
               com:
                 technicaltest:
                   payments:
-                    kafkaadapter:
+                    domain:
                       exceptions:
                         BusinessException: false
+  datasource:
+    driver-class-name:
+    username: tech
+    password: test
+    url: jdbc:postgresql://localhost:5432/payments
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect

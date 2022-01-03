@@ -1,4 +1,4 @@
-package com.technicaltest.payments.kafkaadapter.exceptions;
+package com.technicaltest.payments.domain.exceptions;
 
 public class BusinessException extends RuntimeException{
 

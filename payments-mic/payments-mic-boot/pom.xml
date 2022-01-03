@@ -43,6 +43,10 @@
             <groupId>com.technicaltest</groupId>
             <artifactId>payments-mic-kafka-adapter</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.technicaltest</groupId>
+            <artifactId>payments-mic-jpa-adapter</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
