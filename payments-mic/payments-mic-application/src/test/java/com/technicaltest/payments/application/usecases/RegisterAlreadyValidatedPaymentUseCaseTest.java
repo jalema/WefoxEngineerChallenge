@@ -39,11 +39,10 @@ class RegisterAlreadyValidatedPaymentUseCaseTest {
 
     private PaymentErrorsRepository paymentErrorsRepository = mock(PaymentErrorsRepository.class);
 
-    private Clock clock = Clock.fixed(Instant.parse("2022-01-04T13:00:00.00Z"), ZoneId.of("UTC"));
-
     @Test
     void create_payment_when_already_exists_nothing_is_done() {
         // GIVEN
+        var paymentCreatedOn = LocalDateTime.of(2022, 1, 4, 17, 0, 10);
         PaymentId paymentId = new PaymentId(UUID.randomUUID());
         AccountId accountId = new AccountId(1);
         Payment payment = Payment.builder()
@@ -51,7 +50,7 @@ class RegisterAlreadyValidatedPaymentUseCaseTest {
             .accountId(accountId)
             .paymentType(OFFLINE)
             .amount(BigDecimal.ONE)
-            .createdOn(LocalDateTime.now(clock))
+            .createdOn(paymentCreatedOn)
             .build();
         RegisterAlreadyValidatedPaymentUseCase sut = new PaymentsService(accountRepository, paymentRepository,
             paymentGatewayRepository, paymentErrorsRepository);
@@ -70,6 +69,7 @@ class RegisterAlreadyValidatedPaymentUseCaseTest {
     @Test
     void create_payment_that_not_exists_and_account_not_exists_should_log_error() {
         // GIVEN
+        var paymentCreatedOn = LocalDateTime.of(2022, 1, 4, 17, 0, 10);
         PaymentId paymentId = new PaymentId(UUID.randomUUID());
         AccountId accountId = new AccountId(1);
         Payment payment = Payment.builder()
@@ -77,7 +77,7 @@ class RegisterAlreadyValidatedPaymentUseCaseTest {
             .accountId(accountId)
             .paymentType(OFFLINE)
             .amount(BigDecimal.ONE)
-            .createdOn(LocalDateTime.now(clock))
+            .createdOn(paymentCreatedOn)
             .build();
         RegisterAlreadyValidatedPaymentUseCase sut = new PaymentsService(accountRepository, paymentRepository,
             paymentGatewayRepository, paymentErrorsRepository);
@@ -97,6 +97,7 @@ class RegisterAlreadyValidatedPaymentUseCaseTest {
     @Test
     void create_payment_that_not_exists_and_account_exists_should_create_payment_and_update_account() {
         // GIVEN
+        var paymentCreatedOn = LocalDateTime.of(2022, 1, 4, 17, 0, 10);
         PaymentId paymentId = new PaymentId(UUID.randomUUID());
         AccountId accountId = new AccountId(1);
         Payment payment = Payment.builder()
@@ -104,7 +105,7 @@ class RegisterAlreadyValidatedPaymentUseCaseTest {
             .accountId(accountId)
             .paymentType(OFFLINE)
             .amount(BigDecimal.ONE)
-            .createdOn(LocalDateTime.now(clock))
+            .createdOn(paymentCreatedOn)
             .build();
         Account account = Account.builder()
             .accountId(accountId)
@@ -120,7 +121,7 @@ class RegisterAlreadyValidatedPaymentUseCaseTest {
         sut.saveValidPayment(payment);
 
         // THEN
-        assertEquals(payment.getCreatedOn(), account.getLastPaymentDate());
+        assertEquals(paymentCreatedOn, account.getLastPaymentDate());
         verify(accountRepository).update(account);
         verify(paymentRepository).save(payment);
         verify(paymentErrorsRepository, never()).save(any());
@@ -129,6 +130,7 @@ class RegisterAlreadyValidatedPaymentUseCaseTest {
     @Test
     void create_payment_that_not_exists_and_unexpected_error_should_log_error() {
         // GIVEN
+        var paymentCreatedOn = LocalDateTime.of(2022, 1, 4, 17, 0, 10);
         PaymentId paymentId = new PaymentId(UUID.randomUUID());
         AccountId accountId = new AccountId(1);
         Payment payment = Payment.builder()
@@ -136,7 +138,7 @@ class RegisterAlreadyValidatedPaymentUseCaseTest {
             .accountId(accountId)
             .paymentType(OFFLINE)
             .amount(BigDecimal.ONE)
-            .createdOn(LocalDateTime.now(clock))
+            .createdOn(paymentCreatedOn)
             .build();
         RegisterAlreadyValidatedPaymentUseCase sut = new PaymentsService(accountRepository, paymentRepository,
             paymentGatewayRepository, paymentErrorsRepository);
