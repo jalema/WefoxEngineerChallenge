@@ -4,11 +4,11 @@ import com.technicaltest.payments.domain.entities.PaymentError;
 
 public abstract class PaymentException extends BusinessException {
 
-    public PaymentException(String message) {
+    protected PaymentException(String message) {
         super(message);
     }
 
-    public PaymentException(String message, Throwable cause) {
+    protected PaymentException(String message, Throwable cause) {
         super(message, cause);
     }
 
