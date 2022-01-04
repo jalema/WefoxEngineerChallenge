@@ -19,6 +19,7 @@ import com.technicaltest.payments.domain.exceptions.PaymentAccountNotFoundExcept
 import com.technicaltest.payments.domain.values.AccountId;
 import com.technicaltest.payments.domain.values.ErrorType;
 import com.technicaltest.payments.domain.values.PaymentId;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static com.technicaltest.payments.domain.values.ErrorType.OTHER;
@@ -119,6 +120,7 @@ class RegisterAlreadyValidatedPaymentUseCaseTest {
         sut.saveValidPayment(payment);
 
         // THEN
+        assertEquals(payment.getCreatedOn(), account.getLastPaymentDate());
         verify(accountRepository).update(account);
         verify(paymentRepository).save(payment);
         verify(paymentErrorsRepository, never()).save(any());

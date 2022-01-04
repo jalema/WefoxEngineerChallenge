@@ -8,9 +8,5 @@ public abstract class PaymentException extends BusinessException {
         super(message);
     }
 
-    protected PaymentException(String message, Throwable cause) {
-        super(message, cause);
-    }
-
     public abstract PaymentError toError();
 }
