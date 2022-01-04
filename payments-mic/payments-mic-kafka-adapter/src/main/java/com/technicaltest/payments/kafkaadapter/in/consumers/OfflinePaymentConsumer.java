@@ -23,9 +23,11 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 public class OfflinePaymentConsumer implements Consumer<OfflinePaymentDTO> {
 
-    @NonNull private final RegisterAlreadyValidatedPaymentUseCase useCase;
+    @NonNull
+    private final RegisterAlreadyValidatedPaymentUseCase useCase;
 
-    @NonNull private final Clock clock;
+    @NonNull
+    private final Clock clock;
 
     @Override
     public void accept(OfflinePaymentDTO offlinePaymentDTO) {

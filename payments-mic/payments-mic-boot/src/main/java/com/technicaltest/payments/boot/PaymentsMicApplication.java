@@ -9,7 +9,8 @@ import org.springframework.context.annotation.ComponentScan;
 	"com.technicaltest.payments.boot",
 	"com.technicaltest.payments.kafkaadapter.in.consumers",
 	"com.technicaltest.payments.application.services",
-	"com.technicaltest.payments.jpaadapter.repositories"
+	"com.technicaltest.payments.jpaadapter.repositories",
+	"com.technicaltest.payments.restadapter.out.client"
 })
 @EntityScan( basePackages = { "com.technicaltest.payments.jpaadapter.entities" })
 public class PaymentsMicApplication {

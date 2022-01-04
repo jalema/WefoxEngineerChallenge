@@ -16,7 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 @Repository
 @Slf4j
 @RequiredArgsConstructor
-public class PaymentRepositoryAdapter implements PaymentRepository {
+public class PaymentRepositoryJpaAdapter implements PaymentRepository {
 
     @NonNull
     private final EntityManager entityManager;
@@ -38,7 +38,7 @@ public class PaymentRepositoryAdapter implements PaymentRepository {
             .paymentId(payment.getPaymentId().getId().toString())
             .accountId(payment.getAccountId().getId())
             .paymentType(payment.getPaymentType().toString())
-            // TODO .creditCard()
+            .creditCard(payment.getCreditCard())
             .amount(payment.getAmount())
             .createdOn(payment.getCreatedOn())
             .build();

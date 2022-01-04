@@ -59,6 +59,11 @@
 				<artifactId>payments-mic-jpa-adapter</artifactId>
 				<version>${project.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>com.technicaltest</groupId>
+				<artifactId>payments-mic-rest-adapter</artifactId>
+				<version>${project.version}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 

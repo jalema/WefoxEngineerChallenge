@@ -1,5 +1,7 @@
 package com.technicaltest.payments.jpaadapter.repositories;
 
+import java.util.Optional;
+
 import javax.persistence.EntityManager;
 import javax.persistence.LockModeType;
 
@@ -16,7 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 @Repository
 @Slf4j
 @RequiredArgsConstructor
-public class AccountRepositoryAdapter implements AccountRepository {
+public class AccountRepositoryJpaAdapter implements AccountRepository {
 
     @NonNull
     private final EntityManager entityManager;
@@ -28,7 +30,7 @@ public class AccountRepositoryAdapter implements AccountRepository {
     }
 
     @Override
-    public void update(Account account) {
+    public void update(@NonNull Account account) {
         entityManager.merge(toJPA(account));
     }
 
@@ -43,13 +45,15 @@ public class AccountRepositoryAdapter implements AccountRepository {
     }
 
     private Account toEntity(AccountJPA accountJPA) {
-        return Account.builder()
-            .accountId(new AccountId(accountJPA.getAccountId()))
-            .name(accountJPA.getName())
-            .email(accountJPA.getEmail())
-            .birthdate(accountJPA.getBirthdate())
-            .lastPaymentDate(accountJPA.getLastPaymentDate())
-            .build();
+        return Optional.ofNullable(accountJPA)
+            .map(account -> Account.builder()
+                .accountId(new AccountId(account.getAccountId()))
+                .name(account.getName())
+                .email(account.getEmail())
+                .birthdate(account.getBirthdate())
+                .lastPaymentDate(account.getLastPaymentDate())
+                .build())
+            .orElse(null);
     }
     
 }
