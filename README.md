@@ -4,14 +4,13 @@
 
 To run this project we need to do three steps:
 1. Run the infrastructure with docker-compose:
-    ``` cmd
-    challenge> cd delivery 
-    challenge\delivery> docker-compose up -d  
+    ``` cmd 
+    WefoxEngineerChallenge> docker-compose up -d  
     ```
 2. Run the spring-boot project:
     ``` cmd
-    challenge> cd .\delivery\payments-mic
-    challenge\payments-mic> .\mvnw -f .\payments-mic-boot\ spring-boot:run -D "spring-boot.run.arguments=--spring.datasource.password=test"
+    WefoxEngineerChallenge> cd .\payments-mic
+    WefoxEngineerChallenge\payments-mic> .\mvnw -f .\payments-mic-boot\ spring-boot:run -D "spring-boot.run.arguments=--spring.datasource.password=test"
     ```
 3. Open the navigator and put the URL: `http://localhost:9000/start`
 
