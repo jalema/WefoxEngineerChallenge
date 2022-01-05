@@ -20,17 +20,17 @@ import lombok.NoArgsConstructor;
 public class AccountJPA {
     @Id
     @Column(name = "account_id")
-    Integer accountId;
+    private Integer accountId;
 
     @Column(name = "name", length = 150)
-    String name;
+    private String name;
 
     @Column(name = "email", length = 100, unique = true, nullable = false)
-    String email;
+    private String email;
 
     @Column(name = "birthdate")
-    LocalDate birthdate;
+    private LocalDate birthdate;
 
     @Column(name = "last_payment_date")
-    LocalDateTime lastPaymentDate;
+    private LocalDateTime lastPaymentDate;
 }

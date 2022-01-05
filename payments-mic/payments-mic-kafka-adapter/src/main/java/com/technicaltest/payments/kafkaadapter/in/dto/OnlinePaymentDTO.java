@@ -8,10 +8,15 @@ import lombok.Data;
 
 @Data
 public class OnlinePaymentDTO {
-    @NotNull String payment_id;
-    @NotNull Integer account_id;
-    @NotNull String payment_type;
-    @NotNull String credit_card;
-    @NotNull BigDecimal amount;
-    Integer delay;
+    @NotNull
+    private String payment_id;
+    @NotNull
+    private Integer account_id;
+    @NotNull
+    private String payment_type;
+    @NotNull
+    private String credit_card;
+    @NotNull
+    private BigDecimal amount;
+    private Integer delay;
 }

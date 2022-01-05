@@ -13,7 +13,10 @@ import lombok.ToString;
 @Getter
 @EqualsAndHashCode
 public class PaymentError {
-    @NonNull PaymentId paymentId;
-    @NonNull ErrorType error;
-    @NonNull String description;
+    @NonNull
+    private PaymentId paymentId;
+    @NonNull
+    private ErrorType error;
+    @NonNull
+    private String description;
 }

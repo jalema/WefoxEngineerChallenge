@@ -7,5 +7,6 @@ import lombok.Value;
 
 @Value
 public class PaymentId {
-    @NonNull UUID id;
+    @NonNull
+    UUID id;
 }

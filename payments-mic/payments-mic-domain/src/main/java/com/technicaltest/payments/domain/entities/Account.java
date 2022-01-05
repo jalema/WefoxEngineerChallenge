@@ -13,11 +13,13 @@ import lombok.ToString;
 @ToString
 @Getter
 public class Account {
-    @NonNull AccountId accountId;
-    String name;
-    @NonNull String email;
-    LocalDate birthdate;
-    LocalDateTime lastPaymentDate;
+    @NonNull
+    private AccountId accountId;
+    private String name;
+    @NonNull
+    private String email;
+    private LocalDate birthdate;
+    private LocalDateTime lastPaymentDate;
 
     public void addPayment(@NonNull Payment payment) {
         this.lastPaymentDate = payment.getCreatedOn();

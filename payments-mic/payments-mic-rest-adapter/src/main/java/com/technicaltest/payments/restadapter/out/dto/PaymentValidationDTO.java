@@ -12,9 +12,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class PaymentValidationDTO {
-    String payment_id;
-    Integer account_id;
-    String payment_type;
-    String credit_card;
-    BigDecimal amount;
+    private String payment_id;
+    private Integer account_id;
+    private String payment_type;
+    private String credit_card;
+    private BigDecimal amount;
 }

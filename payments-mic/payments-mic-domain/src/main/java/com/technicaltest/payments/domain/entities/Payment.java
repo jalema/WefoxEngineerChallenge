@@ -15,10 +15,14 @@ import lombok.ToString;
 @ToString
 @Getter
 public class Payment {
-    @NonNull PaymentId paymentId;
-    @NonNull AccountId accountId;
-    @NonNull PaymentType paymentType;
-    String creditCard;
-    @NonNull BigDecimal amount;
-    LocalDateTime createdOn;
+    @NonNull
+    private PaymentId paymentId;
+    @NonNull
+    private AccountId accountId;
+    @NonNull
+    private PaymentType paymentType;
+    private String creditCard;
+    @NonNull
+    private BigDecimal amount;
+    private LocalDateTime createdOn;
 }

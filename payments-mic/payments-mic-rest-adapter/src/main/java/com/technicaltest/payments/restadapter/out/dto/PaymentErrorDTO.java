@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class PaymentErrorDTO {
-    String payment_id;
-    String error_type;
-    String error_description;
+    private String payment_id;
+    private String error_type;
+    private String error_description;
 }

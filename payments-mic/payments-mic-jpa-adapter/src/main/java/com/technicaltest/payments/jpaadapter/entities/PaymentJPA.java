@@ -21,20 +21,20 @@ public class PaymentJPA {
 
     @Id
     @Column(name = "payment_id", length = 100)
-    String paymentId;
+    private String paymentId;
 
     @Column(name = "account_id", nullable = false)
-    Integer accountId;
+    private Integer accountId;
 
     @Column(name = "payment_type", nullable = false, length = 150)
-    String paymentType;
+    private String paymentType;
 
     @Column(name = "credit_card", length = 100)
-    String creditCard;
+    private String creditCard;
 
     @Column(name = "amount", nullable = false)
-    BigDecimal amount;
+    private BigDecimal amount;
 
     @Column(name = "created_on")
-    LocalDateTime createdOn;
+    private LocalDateTime createdOn;
 }
